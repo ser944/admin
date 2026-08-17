@@ -1,0 +1,25 @@
+{
+  "name": "Fedora com VNC",
+  "image": "fedora:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup-fedora-vnc.sh",
+  "remoteUser": "root",
+  "forwardPorts": [5901, 6080],
+  "portsAttributes": {
+    "5901": {
+      "label": "VNC",
+      "onAutoForward": "notify"
+    },
+    "6080": {
+      "label": "noVNC (Web)",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}
